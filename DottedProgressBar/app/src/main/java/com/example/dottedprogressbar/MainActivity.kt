@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.example.dottedprogressbar.databinding.ActivityMainBinding
 import com.example.dottedprogressbar.view.mediator.ProgressBarLayoutMediator
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
