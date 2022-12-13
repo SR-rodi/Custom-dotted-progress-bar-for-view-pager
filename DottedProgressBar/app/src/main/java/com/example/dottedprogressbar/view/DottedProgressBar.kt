@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.icu.text.Transliterator.Position
 import android.util.AttributeSet
 import android.view.View
 import com.example.dottedprogressbar.R
@@ -51,11 +52,14 @@ class DottedProgressBar @JvmOverloads constructor(context: Context, attrs: Attri
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
         settings.listProgressBar.forEach {
             paint.color = if (it.status == StatusDottedProgressBar.EMPTY) progressEmptyColor
             else progressFullColor
             canvas?.drawRoundRect(it.rect, 5f, 5f, paint)
         }
+        paint.color = progressFullColor
+        canvas?.drawRoundRect(settings.indicator.rect, 5f, 5f, paint)
     }
 
     fun setProgress(progress: Int){
@@ -64,9 +68,8 @@ class DottedProgressBar @JvmOverloads constructor(context: Context, attrs: Attri
         invalidate()
     }
 
-    fun setProgressWithViewPager(progress: Int){
-        this.progress = progress
-        settings.setProgressWithViewPager(progress)
+    fun setScrollProgress(position: Int,positionOffSet:Float){
+        settings.toScrollIndicator(position,positionOffSet)
         invalidate()
     }
 

@@ -6,6 +6,7 @@ import android.util.Log
 class ProgressBarSettings {
 
     val listProgressBar = mutableListOf<UnitProgress>()
+    var indicator = UnitProgress(StatusDottedProgressBar.FULL, RectF())
 
     private var width = 0
     private var height = 0
@@ -53,6 +54,7 @@ class ProgressBarSettings {
             if (listProgressBar[progress].status == StatusDottedProgressBar.EMPTY)
                 for (i in 0..progress)
                     listProgressBar[i].status = StatusDottedProgressBar.FULL
+
             if (listProgressBar[progress].status == StatusDottedProgressBar.FULL) {
                 for (i in progress..listProgressBar.size) {
                     if (listProgressBar[i].status == StatusDottedProgressBar.EMPTY) break
@@ -62,23 +64,21 @@ class ProgressBarSettings {
         } catch (e: Exception) {
             Log.e("Kart", "${e.message}")
         }
-
     }
 
-    fun setProgressWithViewPager(progress: Int) {
-      val progress1 = if (progress == 0) 1 else progress
-        try {
-            if (listProgressBar[progress1].status == StatusDottedProgressBar.EMPTY){
-                listProgressBar[progress1].status = StatusDottedProgressBar.FULL
-            }
-        } catch (e: Exception) {
-            Log.e("Kart", "${e.message}")
-        }
+    fun toScrollIndicator(position: Int, positionOffSet: Float) {
+        indicator.rect = listProgressBar[position].rect.toRectF()
 
+        val progress = (listProgressBar[position].rect.right - indicator.rect.left) * positionOffSet
+
+        indicator.rect.right = indicator.rect.left+progress
     }
+
+    private fun RectF.toRectF() = RectF(this)
 
     companion object {
         const val DOTTED_PADDING = 0.05F
     }
 
 }
+
