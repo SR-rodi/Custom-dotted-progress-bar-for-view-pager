@@ -1,6 +1,5 @@
 package com.example.dottedprogressbar.view.mediator
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dottedprogressbar.view.DottedProgressBar
