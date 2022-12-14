@@ -12,7 +12,7 @@ ProgressBarLayoutMediator(binding.progressBar,binding.pager).attach()
 ```
 - если все правильно выполнить то можно получить результат как на примере ниже: 
 
-<img src="https://github.com/SR-rodi/Custom-dotted-progress-bar-for-view-pager/blob/main/DottedProgressBar/screen/progress.gif" width=30% height=30%>
+<img src="https://github.com/SR-rodi/Custom-dotted-progress-bar-for-view-pager/blob/main/DottedProgressBar/screen/anim_progress.gif" width=30% height=30%>
 
 Помимо этого, данную кастом вью можно использовать как стандартный прогресс бар. Настраеваемые параметрый прямо из XML:
 - цвет прогресс бара как активного слоя так и нет:
